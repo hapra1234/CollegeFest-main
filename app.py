@@ -168,6 +168,11 @@ def admin_logout():
 @app.route('/api/admin/status', methods=['GET'])
 def admin_status():
     return jsonify({"logged_in": session.get('admin_logged_in', False)})
+    
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "UP", "message": "Flask app is running"}), 200
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
